@@ -1,0 +1,6 @@
+flask
+flask-cors
+akshare
+requests
+beautifulsoup4
+openai 
