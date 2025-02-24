@@ -52,3 +52,5 @@ coverage/
 # 项目特定忽略
 backend/.env
 frontend/.env 
+/.vscode/
+/frontend/node_modules/
