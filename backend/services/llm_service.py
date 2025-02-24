@@ -1,7 +1,10 @@
 from openai import OpenAI
-from config import OPENAI_API_KEY
+from config import Config
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+client = OpenAI(
+    api_key=Config.OPENAI_API_KEY,
+    base_url=Config.OPENAI_BASE_URL
+)
 
 def analyze_content(content):
     try:
@@ -18,7 +21,7 @@ def analyze_content(content):
         """
         
         response = client.chat.completions.create(
-            model="gpt-4",
+            model=Config.OPENAI_MODEL_NAME,
             messages=[
                 {"role": "system", "content": "你是一个专业的金融分析师，专注于A股市场分析。"},
                 {"role": "user", "content": prompt}
