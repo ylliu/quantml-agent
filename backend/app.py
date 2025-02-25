@@ -4,9 +4,10 @@ from services.stock_service import get_stock_data
 from services.report_service import get_report_summary
 from services.news_service import get_news
 from services.llm_service import analyze_content
+from services.index_service import get_index_data
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
 
 @app.route('/api/stock/<stock_code>')
 def stock_data(stock_code):
@@ -30,6 +31,11 @@ def news():
         'news': news_items,
         'analysis': analysis
     })
+
+@app.route('/api/indices')
+def indices():
+    data = get_index_data()
+    return jsonify(data)
 
 if __name__ == '__main__':
     app.run(debug=True) 
