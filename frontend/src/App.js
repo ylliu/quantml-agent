@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TabNavigation from './components/TabNavigation';
 import MarketAnalysis from './components/MarketAnalysis';
 import StockAnalysis from './components/StockAnalysis';
+import ChatbotWidget from './components/ChatbotWidget';
 
 function App() {
   const [activeTab, setActiveTab] = useState('market');
@@ -52,6 +53,8 @@ function App() {
           />
         )}
       </main>
+      
+      <ChatbotWidget />
       
       <footer className="app-footer">
         <p>© 2023 A股市场分析助手 | 数据来源: AKShare</p>
