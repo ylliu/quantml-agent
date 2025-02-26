@@ -10,7 +10,7 @@ def get_index_data():
         print(f"获取到指数数据: {len(index_data)} 条记录")
         
         # 筛选主要指数
-        main_indices = ['000001', '399001', '399006']
+        main_indices = ['sh000001', 'sz399001', 'sz399006']
         result = []
         
         for idx in main_indices:
