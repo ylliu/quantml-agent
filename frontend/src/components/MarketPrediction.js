@@ -114,7 +114,11 @@ function MarketPrediction() {
   const sectorOption = {
     title: {
       text: '热点板块预测',
-      left: 'center'
+      left: 'center',
+      textStyle: {
+        fontSize: 16,
+        fontWeight: 'normal'
+      }
     },
     tooltip: {
       trigger: 'axis',
@@ -137,7 +141,15 @@ function MarketPrediction() {
     },
     yAxis: {
       type: 'category',
-      data: sectorPredictions.map(item => item.name)
+      data: sectorPredictions.map(item => item.name),
+      axisLine: {
+        lineStyle: {
+          color: '#ddd'
+        }
+      },
+      axisTick: {
+        show: false
+      }
     },
     series: [
       {
@@ -151,7 +163,8 @@ function MarketPrediction() {
             if (score >= 70) return '#52c41a';
             if (score >= 50) return '#faad14';
             return '#ff4d4f';
-          }
+          },
+          borderRadius: [0, 4, 4, 0]
         },
         label: {
           show: true,

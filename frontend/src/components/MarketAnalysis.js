@@ -77,9 +77,15 @@ function MarketAnalysis({ reports, news }) {
           <h3>大盘指数</h3>
           
           {loading ? (
-            <div className="loading">加载中...</div>
+            <div className="loading">
+              <div className="loading-spinner"></div>
+              <div>加载中...</div>
+            </div>
           ) : error ? (
-            <div className="error">加载失败: {error}</div>
+            <div className="error">
+              <div className="error-icon">!</div>
+              <div>加载失败: {error}</div>
+            </div>
           ) : indices.length === 0 ? (
             <div className="error">暂无指数数据</div>
           ) : (

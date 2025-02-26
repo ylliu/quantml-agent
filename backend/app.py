@@ -7,7 +7,8 @@ from services.llm_service import analyze_content
 from services.index_service import get_index_data
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+# 允许所有来源的请求
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route('/api/stock/<stock_code>')
 def stock_data(stock_code):
@@ -38,4 +39,4 @@ def indices():
     return jsonify(data)
 
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True, port=5001) 
