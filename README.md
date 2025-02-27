@@ -59,13 +59,17 @@ pip install -r requirements.txt
 3. 配置环境变量
 ```bash
 # 创建.env文件
+cd ..
 cp .env.example .env
 # 编辑.env文件，添加必要的API密钥
+# 如果部署在云服务器，也需要配置对应的REACT_APP_SERVER_IP 
 ```
 
 4. 安装前端依赖
 ```bash
-cd ../frontend
+# 把.env文件也拷贝一份到frontend中
+cp .env ./frontend/.env
+cd ./frontend
 npm install
 ```
 
