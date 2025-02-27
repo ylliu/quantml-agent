@@ -4,6 +4,7 @@ import MarketAnalysis from './components/MarketAnalysis';
 import StockAnalysis from './components/StockAnalysis';
 import ChatbotWidget from './components/ChatbotWidget';
 
+console.log(process.env.REACT_APP_SERVER_IP);
 function App() {
   const [activeTab, setActiveTab] = useState('market');
   const [selectedStock, setSelectedStock] = useState(null);
@@ -12,6 +13,7 @@ function App() {
   const [news, setNews] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const  server_ip = process.env.REACT_APP_SERVER_IP;
 
   // 模拟数据，当API请求失败时使用
   const mockReports = {
@@ -54,7 +56,7 @@ function App() {
     // 获取研报和新闻数据
     setLoading(true);
     
-    const fetchReportsPromise = fetch('http://127.0.0.1:5001/api/reports')
+    const fetchReportsPromise = fetch(`http://${server_ip}:5001/api/reports`)
       .then(res => {
         if (!res.ok) throw new Error('研报数据获取失败');
         return res.json();
@@ -65,7 +67,7 @@ function App() {
         return mockReports;
       });
     
-    const fetchNewsPromise = fetch('http://127.0.0.1:5001/api/news')
+    const fetchNewsPromise = fetch(`http://${server_ip}:5001/api/news`)
       .then(res => {
         if (!res.ok) throw new Error('新闻数据获取失败');
         return res.json();
@@ -105,7 +107,7 @@ function App() {
   useEffect(() => {
     if (selectedStock) {
       setLoading(true);
-      fetch(`http://localhost:5000/api/stock/${selectedStock}`)
+      fetch(`http://${server_ip}:5000/api/stock/${selectedStock}`)
         .then(res => res.json())
         .then(data => {
           setStockData(data);

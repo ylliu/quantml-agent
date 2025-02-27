@@ -7,10 +7,10 @@ function MarketAnalysis({ reports, news }) {
   const [indices, setIndices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const  server_ip = process.env.REACT_APP_SERVER_IP;
   useEffect(() => {
     // 尝试获取指数数据
-    fetch('http://127.0.0.1:5000/api/indices')
+    fetch(`http://${server_ip}:5000/api/indices`)
       .then(res => {
         if (!res.ok) {
           throw new Error('网络请求失败');
